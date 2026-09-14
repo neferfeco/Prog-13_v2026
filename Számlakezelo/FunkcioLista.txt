@@ -1,0 +1,19 @@
+[x] Adattároló fájl
+
+[X] Belépés PIN kóddal
+[ ] Funkcióválasztó menü
+
+Funkciók:
+[ ] Egyenleg lekérdezés
+[ ] Pénz kivétel/utalás
+[ ] Pénz betét
+
+[ ] Tranzakció történet
+[ ] Használati díj
+[ ] Statisztika
+    [ ] költések összege
+    [ ] betétek összege
+    [ ] legnagyobb kiadás
+
+[x] Kilépés
+
