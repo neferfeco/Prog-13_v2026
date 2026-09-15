@@ -37,18 +37,42 @@ def egyenleg():
         szamla_egyenleg += int(sz)
     
     print(f"Az egyenleged: {szamla_egyenleg} Ft")
+    
+    return szamla_egyenleg
 
 
 def utalas(osszeg):
     print("Utalás: ")
+    
+    osszeg += round(hasznalati_dij * 0.05)
+    
+    if osszeg > egyenleg():
+        print("Nem áll rendelkezésre a megfelelő összeg!")
+    else:        
+        tranzakciok.append(f"-{osszeg}")
+    
+    egyenleg()
+
 
 def penzbetet(osszeg):
     print("Betét: ")
+    tranzakciok.append(f"+{osszeg}")
+    
+    egyenleg()
+
 
 # darab = 0 -> összes tranzakció
 # darab !=0 -> utolsó darab tranzakcio
 def tortenet(darab):
     print("Tranzakciók: ")
+    
+    if darab == 0:
+        kezdet = 0
+    else:
+        kezdet = len(tranzakciok)-darab
+    
+    for i in range(kezdet, len(tranzakciok)):
+        print(f"\t{tranzakciok[i].rstrip()}")
 
 
 
@@ -113,16 +137,19 @@ while True:
         valasztas = int(input("Válassz tevékenységet: "))
 
     # "Képernyő törlése"
-    print(f"{'\n' * 20}")
+    # print(f"{'\n' * 20}")
 
     if valasztas == 1:
         egyenleg()
     elif valasztas == 2:
-        utalas(123)
+        u = int(input("Kivétel vagy utalás összege: "))
+        utalas(u)
     elif valasztas == 3:
-        penzbetet(10000)
+        b = int(input("Betét összege: "))
+        penzbetet(b)
     elif valasztas == 4:
-        tortenet(0)
+        m = int(input("Előzmény mérete (db) Minden: [0]: "))
+        tortenet(m)
     elif valasztas == 9:
         # mentes(adatfajl)
         exit()
