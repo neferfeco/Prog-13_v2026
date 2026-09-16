@@ -7,7 +7,7 @@ from colorama import Fore, Back, Style
 pin_kod = 1234
 egyenleg = 0
 hasznalati_dij = 1000
-adatfajl = "Számlakezelo\\szamla.txt"
+adatfajl = "01_Számlakezelo\\szamla.txt"
 jogosult = False
 tranzakciok = []
 
