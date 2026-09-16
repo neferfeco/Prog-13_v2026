@@ -16,4 +16,9 @@ Funkciók:
     [ ] legnagyobb kiadás
 
 [x] Kilépés
+    [ ] Mentés
+
+
+
+
 

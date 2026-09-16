@@ -1,3 +1,4 @@
+import subprocess
 
 
 
@@ -153,6 +154,11 @@ while True:
     elif valasztas == 9:
         # mentes(adatfajl)
         exit()
+
+    input(f"Üss egy billentyűt a folytatáshoz...")
+    subprocess.run(["cls"], shell=True)
+
+
 
 
 
