@@ -7,7 +7,7 @@ from colorama import Fore, Back, Style
 pin_kod = 1234
 egyenleg = 0
 hasznalati_dij = 1000
-adatfajl = "szamla.txt"
+adatfajl = "Számlakezelo\\szamla.txt"
 jogosult = False
 tranzakciok = []
 
@@ -161,7 +161,7 @@ menu = [
 menupontok = [1, 2, 3, 4, 5, 6, 7, 9]
 
 while True:
-    print(f"{Back.LIGHTCYAN_EX}{cim:30}")
+    print(f"{Back.LIGHTCYAN_EX}{cim}")
     print(f"{Back.RESET}", end="")
     
     print(f"{Fore.LIGHTCYAN_EX}", end="")
