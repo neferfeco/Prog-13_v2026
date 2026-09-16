@@ -1,4 +1,5 @@
 import subprocess
+from colorama import Fore, Back, Style
 
 
 
@@ -26,7 +27,9 @@ def adatbeolvasas(fajl):
 def mentes(fajl):
     try:
         with open(fajl, "w", encoding="UTF-8") as f:
-            f.writelines(tranzakciok)
+            for i in range(len(tranzakciok)):
+                f.write(f"{tranzakciok[i].rstrip()}\n")
+            
     except IOError as e:
         print(f"Fájl művelet hiba: {e}")
 
@@ -37,7 +40,7 @@ def egyenleg():
     for sz in tranzakciok:
         szamla_egyenleg += int(sz)
     
-    print(f"Az egyenleged: {szamla_egyenleg} Ft")
+    print(f"\nAz egyenleged: {szamla_egyenleg} Ft")
     
     return szamla_egyenleg
 
@@ -48,7 +51,7 @@ def utalas(osszeg):
     osszeg += round(hasznalati_dij * 0.05)
     
     if osszeg > egyenleg():
-        print("Nem áll rendelkezésre a megfelelő összeg!")
+        print("\nNem áll rendelkezésre a megfelelő összeg!")
     else:        
         tranzakciok.append(f"-{osszeg}")
     
@@ -76,6 +79,36 @@ def tortenet(darab):
         print(f"\t{tranzakciok[i].rstrip()}")
 
 
+def koltes_osszeg():
+    osszeg = 0
+    
+    for sz in tranzakciok:        
+        if int(sz) < 0:
+            osszeg += int(sz)
+    
+    return osszeg
+
+
+def betet_osszeg():
+    osszeg = 0
+    
+    for sz in tranzakciok:        
+        if int(sz) > 0:
+            osszeg += int(sz)
+    
+    return osszeg   
+
+
+def legnagyobb_kiadas():
+    min_ertek = 0
+    
+    for sz in tranzakciok:
+        if int(sz) < min_ertek:
+            min_ertek = int(sz)
+            
+    return min_ertek
+
+
 
 #######################################
 # A PROGRAM
@@ -88,19 +121,21 @@ pk = int(input("Add meg a PIN kódodat!: "))
 
 if pk == pin_kod:
         jogosult = True
-        print("Sikeres belépés!")
+        print(f"{Fore.GREEN} Sikeres belépés!")
 
 while(not jogosult and hibas_belepesszam > 1):
-    print(f"Hibás PIN kód!")
+    print(f"{Fore.RED} Hibás PIN kód!")
     pk = int(input("Add meg a PIN kódodat!: "))
     hibas_belepesszam -= 1
   
     if pk == pin_kod:
         jogosult = True
-        print("Sikeres belépés!")
+        print(f"{Fore.GREEN} Sikeres belépés!")
 
 if not jogosult:
-    print(f"Hibás PIN kód!")
+    print(f"{Fore.RED} Hibás PIN kód!")
+
+print(f"{Fore.RESET}", end="")
 
 adatbeolvasas(adatfajl)
 
@@ -116,13 +151,21 @@ menu = [
     "3. Pénz betét",
     "--------------",
     "4. Tranzakciótörténet",
+    "5. Költések összege",
+    "6. Betétek összege",
+    "7. Legnagyobb kiadás",
+    "--------------",
     "9. Kilépés"
 ]
 
-menupontok = [1, 2, 3, 4, 9]
+menupontok = [1, 2, 3, 4, 5, 6, 7, 9]
 
 while True:
-    print(cim)
+    print(f"{Back.LIGHTCYAN_EX}{cim:30}")
+    print(f"{Back.RESET}", end="")
+    
+    print(f"{Fore.LIGHTCYAN_EX}", end="")
+    
     for me in menu:
         print(f"{me}")
 
@@ -136,6 +179,8 @@ while True:
             print(f"{me}")
 
         valasztas = int(input("Válassz tevékenységet: "))
+
+    print(f"{Fore.RESET}", end="")
 
     # "Képernyő törlése"
     # print(f"{'\n' * 20}")
@@ -151,12 +196,19 @@ while True:
     elif valasztas == 4:
         m = int(input("Előzmény mérete (db) Minden: [0]: "))
         tortenet(m)
+    elif valasztas == 5:
+        print(f"\nÖsszes költés: {koltes_osszeg()} Ft")
+    elif valasztas == 6:
+        print(f"\nÖsszes pénzbetét: {betet_osszeg()} Ft")
+    elif valasztas == 7:
+        print(f"Legnagyobb kiadás: {legnagyobb_kiadas()} Ft")
     elif valasztas == 9:
-        # mentes(adatfajl)
+        mentes(adatfajl)
         exit()
 
     input(f"Üss egy billentyűt a folytatáshoz...")
     subprocess.run(["cls"], shell=True)
+
 
 
 

@@ -11,12 +11,12 @@ Funkciók:
 [x] Tranzakció történet
 [x] Használati díj
 [ ] Statisztika
-    [ ] költések összege
-    [ ] betétek összege
-    [ ] legnagyobb kiadás
+    [x] költések összege
+    [x] betétek összege
+    [x] legnagyobb kiadás
 
 [x] Kilépés
-    [ ] Mentés
+    [x] Mentés
 
 
 
