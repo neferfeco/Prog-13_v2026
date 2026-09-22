@@ -134,6 +134,7 @@ while(not jogosult and hibas_belepesszam > 1):
 
 if not jogosult:
     print(f"{Fore.RED} Hibás PIN kód!")
+    exit()
 
 print(f"{Fore.RESET}", end="")
 
@@ -208,6 +209,7 @@ while True:
 
     input(f"Üss egy billentyűt a folytatáshoz...")
     subprocess.run(["cls"], shell=True)
+
 
 
 
