@@ -1,0 +1,29 @@
+Edzőtermi Bérlet- és Alkalomkezelő Rendszer
+===========================================
+Rövid leírás
+------------
+A program egy sportoló vagy edzőtermi tag egyenlegét, fennmaradó alkalmait és belépési előzményeit tartja nyilván.
+A fájlban pozitív értékek képviselik a feltöltött alkalmakat/jóváírásokat, a negatívak pedig a felhasználásokat.
+
+Funkciólista
+------------
+[x] Adattároló fájl: berlet.txt
+
+[x] Belépés: Tagazonosító ellenőrzése
+
+[] Funkcióválasztó menü:
+	[x] Aktuális egyenleg / Alkalmak lekérdezése
+	[x] Alkalom felhasználása / Belépés regisztrálása (egyenleg csökkentése extra szolgáltatási díj számításával)
+	[x] Bérlet feltöltése / Alkalom vásárlása (egyenleg növelése)
+	[x] Látogatási előzmények (minden belépés vagy az utolsó N alkalom kilistázása)
+
+[x] Statisztikák
+	[x] Összes felhasznált alkalom
+	[x] Összes vásárolt alkalom
+	[x] Leghosszabb/Legnagyobb egyösszegű feltöltés
+
+[x] Kilépés
+
+[x] Adatok elmentése
+
+
