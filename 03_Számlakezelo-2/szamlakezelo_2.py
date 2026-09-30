@@ -31,6 +31,36 @@ def adatbeolvasas(fajl):
 
 
 
+def egyenleg():
+    szamla_egyenleg = 0
+    
+    for szl in tranzakciok: 
+        szamla_egyenleg += int(szl[2])
+        print(int(szl[2]))    
+    
+    return szamla_egyenleg
+
+
+def penz_kivetel():    
+    datum = input("\nDátum? (yyyy.mm.d): ")
+    indok = input("Milyen kategóriába tartozik a költés?: ")
+    kivetel = input("Mekkora összeget veszel ki?: ")
+    megjegyzes = input("Megjegyzés: ")
+
+    kivetellista=[datum, indok, "-" + kivetel, megjegyzes]    
+    tranzakciok.append(kivetellista)
+    
+    print(f"\nAz új egyenleged: {egyenleg()} ft")
+        
+
+
+
+
+
+
+
+
+
 
 
 #######################################
@@ -114,11 +144,10 @@ while True:
     # print(f"{'\n' * 20}")
 
 
-    # if valasztas == 1:
-    #     egyenleg()
-    # elif valasztas == 2:
-    #     u = int(input("Kivétel vagy utalás összege: "))
-    #     utalas(u)
+    if valasztas == 1:
+        print(f"\nAz egyenleged: {egyenleg()} Ft")
+    elif valasztas == 2:
+        penz_kivetel()
     # elif valasztas == 3:
     #     b = int(input("Betét összege: "))
     #     penzbetet(b)
@@ -131,9 +160,9 @@ while True:
     #     print(f"\nÖsszes pénzbetét: {betet_osszeg()} Ft")
     # elif valasztas == 7:
     #     print(f"Legnagyobb kiadás: {legnagyobb_kiadas()} Ft")
-    # elif valasztas == 9:
-    #     mentes(adatfajl)
-    #     exit()
+    elif valasztas == 13:
+     #     mentes(adatfajl)
+        exit()
 
     input(f"Üss egy billentyűt a folytatáshoz...")
     subprocess.run(["cls"], shell=True)

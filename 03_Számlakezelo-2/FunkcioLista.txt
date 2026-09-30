@@ -15,7 +15,7 @@
 -----------------------------------------------------------
 
 Fő funkciók:
-    [] Egyenleg lekérdezés
+    [x] Egyenleg lekérdezés
     [] Pénz kivétel
     [] Pénz betét
 
