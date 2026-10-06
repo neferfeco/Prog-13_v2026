@@ -20,10 +20,10 @@ Fő funkciók:
     [x] Pénz betét
 
 Egyéb funkciók:
-    [] Átlagos kiadás
-    [] Legnagyobb kiadás
+    [x] Átlagos kiadás
+    [x] Legnagyobb kiadás
 
-    [] Tranzakció történet
+    [x] Tranzakció történet
     [] Szűrés kategória alapján
     [] Havi összesítő
     [] Időszakos összesítő

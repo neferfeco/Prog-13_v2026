@@ -60,8 +60,51 @@ def penzbetet():
 
 
 def atlagos_koltes():
-    pass
+    osszeg = 0
+    db = 0
     
+    for sor in tranzakciok:        
+        akt_osszeg = int(sor[2])
+        
+        if akt_osszeg < 0:
+            db += 1
+            osszeg += akt_osszeg
+    
+    return (osszeg / db)
+
+
+def legnagyobb_kiadas():
+    min_ertek = 0    
+    
+    for sor in tranzakciok:
+        akt_osszeg = int(sor[2])
+        
+        if akt_osszeg < min_ertek:
+            min_ertek = akt_osszeg
+            
+    return min_ertek
+
+
+# darab = 0 -> összes tranzakció
+# darab !=0 -> utolsó darab tranzakcio
+def tortenet(darab):
+    print("Tranzakciók: ")
+    
+    if darab == 0:
+        kezdet = 0
+    else:
+        kezdet = len(tranzakciok)-darab
+    
+    print(f"\n\t{'-'*83}")
+    print(f"\t| {'Dátum':^12} | {'Kategória':^12} | {'Összeg':^16} | {'Megjegyzés':30} |")
+    print(f"\t{'-'*83}")
+    
+    for i in range(kezdet, len(tranzakciok)):
+        print(f"\t| {tranzakciok[i][0]:>12} | {tranzakciok[i][1]:<12} | {tranzakciok[i][2]:>13} Ft | {tranzakciok[i][3]:30} |")
+
+    print(f"\t{'-'*83}\n")
+
+
 
 
 
@@ -151,15 +194,15 @@ while True:
         penz_kivetel()
     elif valasztas == 3:
         penzbetet()
-    # elif valasztas == 4:
-    #     m = int(input("Előzmény mérete (db) Minden: [0]: "))
-    #     tortenet(m)
-    # elif valasztas == 5:
-    #     print(f"\nÖsszes költés: {koltes_osszeg()} Ft")
-    # elif valasztas == 6:
-    #     print(f"\nÖsszes pénzbetét: {betet_osszeg()} Ft")
+    elif valasztas == 4:
+        print(f"Az átlagos költésed: {atlagos_koltes()} Ft")
+    elif valasztas == 5:
+        print(f"Legnagyobb kiadás: {legnagyobb_kiadas()} Ft")
+    elif valasztas == 6:
+        db = int(input("Mennyi tranzakciót szeretne látni? [0: összes]: "))
+        tortenet(db)
     # elif valasztas == 7:
-    #     print(f"Legnagyobb kiadás: {legnagyobb_kiadas()} Ft")
+
     elif valasztas == 13:
         #     mentes(adatfajl)
         exit()
