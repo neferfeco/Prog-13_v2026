@@ -105,6 +105,25 @@ def tortenet(darab):
     print(f"\t{'-'*83}\n")
 
 
+def tranzakcio_szures(kategoria):
+    szurt_lista = []
+    
+    for sor in tranzakciok:
+        if sor[1] == kategoria:
+            adatok = [sor[0], sor[2]]    
+            szurt_lista.append(adatok)
+
+    return szurt_lista
+
+
+def tranzakcio_torles():
+    #tranzakciok.pop()
+    #tranzakciok.pop()
+    
+    global tranzakciok
+    tranzakciok = tranzakciok[0:-2]
+
+
 
 
 
@@ -201,7 +220,21 @@ while True:
     elif valasztas == 6:
         db = int(input("Mennyi tranzakciót szeretne látni? [0: összes]: "))
         tortenet(db)
-    # elif valasztas == 7:
+        
+    elif valasztas == 7:
+        kategoriak = ["Fizetés", "Ajándék", "Utazás", "Vásárlás", "Szórakozás"]
+        
+        kategoria = input(f"Válassz kategóriát: {kategoriak}: ")
+        lista = tranzakcio_szures(kategoria)
+
+        print(f"{kategoria} tranzakciói:")
+        for sor in lista:
+            print(f"\t{sor}")
+
+
+    elif valasztas == 10:
+        tranzakcio_torles()
+        tortenet(2)
 
     elif valasztas == 13:
         #     mentes(adatfajl)

@@ -22,13 +22,15 @@ Fő funkciók:
 Egyéb funkciók:
     [x] Átlagos kiadás
     [x] Legnagyobb kiadás
-
+    ---------------------
     [x] Tranzakció történet
-    [] Szűrés kategória alapján
+    [x] Szűrés kategória alapján
+        KIÍRÁS SZÉPÍTENDŐ!
+    
     [] Havi összesítő
     [] Időszakos összesítő
-    
-    [] Tranzakció törlése
+    ----------------------
+    [x] Tranzakció törlése
     [] Tranzakció módosítása
 
 
