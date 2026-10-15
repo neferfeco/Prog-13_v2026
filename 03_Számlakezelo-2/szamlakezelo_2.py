@@ -25,6 +25,20 @@ def adatbeolvasas(fajl):
         print(f"Fájl művelet hiba: {e}")
 
 
+def mentes(fajl):
+    try:
+        with open(fajl, "w", encoding="UTF-8") as f:
+            for sor in tranzakciok:
+                for i in range(len(sor)):
+                    if i == 3:
+                        f.write(f"{sor[i]}\n")
+                    else:
+                        f.write(f"{sor[i]},")
+
+    except IOError as e:
+        print(f"Fájl művelet hiba: {e}")
+
+
 def egyenleg():
     szamla_egyenleg = 0
 
@@ -124,6 +138,22 @@ def tranzakcio_torles():
     tranzakciok = tranzakciok[0:-2]
 
 
+def havi_osszesito(honap):
+    havi_egyenleg = 0
+        
+    for sor in tranzakciok:
+        datum = sor[0].split(".")
+        akt_ev = int(datum[0])
+        akt_honap = int(datum[1])
+        
+        if akt_honap == honap and akt_ev == 2026:
+            havi_egyenleg += int(sor[2])
+
+    return havi_egyenleg
+
+
+def osszesito(kezdo, vege):
+    pass
 
 
 
@@ -231,13 +261,20 @@ while True:
         for sor in lista:
             print(f"\t{sor}")
 
+    elif valasztas == 8:
+        honap_sorszam = int(input("Add meg a hónap sorszámát: "))
+        print(f"Az idei év {honap_sorszam}. hónapjának egyenlege: {havi_osszesito(honap_sorszam)}")
+
+
+
+
 
     elif valasztas == 10:
         tranzakcio_torles()
         tortenet(2)
 
     elif valasztas == 13:
-        #     mentes(adatfajl)
+        mentes(adatfajl)
         exit()
 
     input(f"Üss egy billentyűt a folytatáshoz...")

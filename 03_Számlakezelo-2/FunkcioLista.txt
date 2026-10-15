@@ -27,15 +27,15 @@ Egyéb funkciók:
     [x] Szűrés kategória alapján
         KIÍRÁS SZÉPÍTENDŐ!
     
-    [] Havi összesítő
+    [x] Havi összesítő
     [] Időszakos összesítő
     ----------------------
     [x] Tranzakció törlése
     [] Tranzakció módosítása
 
 
-[] Kilépés
-    [] Mentés
+[x] Kilépés
+    [x] Mentés
 
 
 
