@@ -1,0 +1,23 @@
+hostname SW-PF
+
+ip domain-name piller.ferenc
+
+username pillerf privilege 15 password Jelszo123
+
+crypto key generate rsa
+1024
+
+ip ssh version 2
+
+line vty 0 15
+login local
+transport input ssh
+exit
+
+
+interface vlan 1
+ip address 192.168.40.254 255.255.255.0
+no shutdown
+exit
+
+
