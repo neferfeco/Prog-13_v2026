@@ -1,8 +1,12 @@
+ena
+conf t
+
+
 hostname SW-PF
 
 ip domain-name piller.ferenc
 
-username pillerf privilege 15 password Jelszo123
+username pillerf privilege 15 password sshJelszo159
 
 crypto key generate rsa
 1024
